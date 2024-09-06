@@ -14,7 +14,7 @@ RUN python3 giteapc.py install Lephenixnoir/GiteaPC -y
 
 # Install the C/C++ SDK and compiler
 RUN apt install cmake python3-pil libusb-1.0-0-dev libsdl2-dev libudisks2-dev libglib2.0-dev libpng-dev libncurses5-dev -y
-RUN apt install apt install libmpfr-dev libmpc-dev libgmp-dev libppl-dev flex texinfo python-is-python3 -y
+RUN apt install libmpfr-dev libmpc-dev libgmp-dev libppl-dev flex texinfo python-is-python3 -y
 
 RUN python3 giteapc.py install Lephenixnoir/fxsdk Lephenixnoir/sh-elf-binutils Lephenixnoir/sh-elf-gcc Lephenixnoir/sh-elf-gdb -y
 
