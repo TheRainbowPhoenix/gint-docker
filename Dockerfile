@@ -28,7 +28,7 @@ RUN python3 giteapc.py install Lephenixnoir/gint -y
 
 # Codespace
 ENV USERNAME="dev"
-RUN apt-get install less vim nano sudo tree -qqy && apt-get -qqy clean
+RUN apt-get install less vim nano sudo tree clangd-13 clang-format-13 -qqy && apt-get -qqy clean
 
 RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -40,6 +40,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # RUN echo "export OLD_SDK_DIR=${OLD_SDK_DIR}" >> ~/.bashrc
 
 WORKDIR /workspace
-RUN fxsdk new my-addin
-RUN cd my-addin
-RUn fxsdk build-cp
+# RUN fxsdk new my-addin
+# RUN cd my-addin
+# RUN fxsdk build-cp
