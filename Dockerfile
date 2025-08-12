@@ -16,15 +16,15 @@ RUN python3 giteapc.py install Lephenixnoir/GiteaPC -y
 RUN apt install cmake python3-pil libusb-1.0-0-dev libsdl2-dev libudisks2-dev libglib2.0-dev libpng-dev libncurses5-dev -y
 RUN apt install libmpfr-dev libmpc-dev libgmp-dev libppl-dev flex texinfo python-is-python3 -y
 
-RUN python3 giteapc.py install Lephenixnoir/fxSDK@dev Lephenixnoir/sh-elf-binutils Lephenixnoir/sh-elf-gcc Lephenixnoir/sh-elf-gdb -y
-
-RUN python3 giteapc.py install Lephenixnoir/OpenLibm Vhex-Kernel-Core/fxlibc -y
+RUN python3 giteapc.py install Lephenixnoir/fxsdk@dev -y
+RUN python3 giteapc.py install Lephenixnoir/sh-elf-binutils -y
 RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y
+RUN python3 giteapc.py install Lephenixnoir/sh-elf-gdb -y
 
+RUN python3 giteapc.py install Lephenixnoir/OpenLibm -y
+RUN python3 giteapc.py install Vhex-Kernel-Core/fxlibc -y
+RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y  # again for any rebuild/update
 RUN python3 giteapc.py install Lephenixnoir/gint -y
-
-
-
 
 # Codespace
 ENV USERNAME="dev"
