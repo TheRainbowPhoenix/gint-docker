@@ -28,7 +28,6 @@ RUN python3 giteapc.py install Lephenixnoir/gint -y
 
 # Codespace
 ENV USERNAME="dev"
-RUN apt-get install less vim nano sudo tree clangd-14 clang-format-14 -qqy && apt-get -qqy clean
 
 RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
