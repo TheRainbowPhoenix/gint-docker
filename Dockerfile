@@ -43,8 +43,6 @@ RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y  # again for any rebui
 RUN python3 giteapc.py install Lephenixnoir/gint@dev -y
 RUN python3 giteapc.py install Lephenixnoir/JustUI@dev -y
 
-RUN echo "export PATH=:$PATH" >> /home/$USERNAME/.bashrc && \
-
 # USER $USERNAME
 # WORKDIR /home/$USERNAME
 
