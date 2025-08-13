@@ -24,7 +24,7 @@ RUN python3 giteapc.py install Lephenixnoir/sh-elf-gdb -y
 RUN python3 giteapc.py install Lephenixnoir/OpenLibm -y
 RUN python3 giteapc.py install Vhex-Kernel-Core/fxlibc -y
 RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y  # again for any rebuild/update
-RUN python3 giteapc.py install Lephenixnoir/gint -y
+RUN python3 giteapc.py install Lephenixnoir/gint@dev -y
 
 # Codespace
 ENV USERNAME="dev"
