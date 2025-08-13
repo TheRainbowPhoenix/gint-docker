@@ -12,14 +12,15 @@ ENV USERNAME="dev"
 
 RUN apt install sudo -y
 
-RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
+# RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
+RUN useradd -m -s /bin/bash -G sudo -u 1001 $USERNAME
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
 
 ENV PATH="/home/$USERNAME/.local/bin:$PATH"
+RUN mkdir /home/$USERNAME/.local/
 RUN mkdir /home/$USERNAME/.local/bin
 
 RUN mkdir /tmp/giteapc-install
