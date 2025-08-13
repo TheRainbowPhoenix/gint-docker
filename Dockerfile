@@ -29,8 +29,11 @@ RUN python3 giteapc.py install Lephenixnoir/gint@dev -y
 # Codespace
 ENV USERNAME="dev"
 
+RUN apt install sudo -y
+
 RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 
 # USER $USERNAME
 # WORKDIR /home/$USERNAME
