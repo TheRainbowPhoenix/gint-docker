@@ -33,8 +33,8 @@ WORKDIR /home/$USERNAME/giteapc
 RUN python3 giteapc.py install Lephenixnoir/GiteaPC -y
 
 RUN python3 giteapc.py install Lephenixnoir/fxsdk@dev -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-binutils -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y
+RUN python3 giteapc.py install Lephenixnoir/sh-elf-binutils:clean -y
+RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc:clean -y
 RUN python3 giteapc.py install Lephenixnoir/sh-elf-gdb -y
 
 RUN python3 giteapc.py install Lephenixnoir/OpenLibm -y
