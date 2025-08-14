@@ -32,6 +32,7 @@ RUN cp -r /tmp/giteapc-install/giteapc /home/$USERNAME/
 WORKDIR /home/$USERNAME/giteapc
 RUN python3 giteapc.py install Lephenixnoir/GiteaPC -y
 
+# sysroot is part of fxsdk so this is needed first
 RUN python3 giteapc.py install Lephenixnoir/fxsdk@dev -y
 RUN python3 giteapc.py install Lephenixnoir/sh-elf-binutils:clean -y
 RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc:clean -y
