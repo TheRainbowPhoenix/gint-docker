@@ -12,8 +12,10 @@ ENV USERNAME="dev"
 
 RUN apt install sudo -y
 
-# RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
-RUN useradd -m -s /bin/bash -G sudo -u 1001 $USERNAME
+RUN useradd -rm -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 -p "$(openssl passwd -1 ${USERNAME})" $USERNAME
+# RUN useradd -m -s /bin/bash -G sudo -u 1001 $USERNAME
+RUN echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER $USERNAME
