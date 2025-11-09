@@ -28,23 +28,27 @@ RUN mkdir /home/$USERNAME/.local/bin
 RUN mkdir /tmp/giteapc-install
 WORKDIR /tmp/giteapc-install
 
-RUN curl "https://git.planet-casio.com/Lephenixnoir/GiteaPC/archive/master.tar.gz" -o giteapc-master.tar.gz
-RUN tar -xzf giteapc-master.tar.gz
-RUN cp -r /tmp/giteapc-install/giteapc /home/$USERNAME/ 
+ARG USERNAME=user
+ENV GITEAPC_PREFIX=/home/$USERNAME/.local
+ENV PATH="${GITEAPC_PREFIX}/bin:${PATH}"
+
+RUN git clone --depth=1 https://git.planet-casio.com/Lephenixnoir/GiteaPC .
+RUN giteapc --version
+
 WORKDIR /home/$USERNAME/giteapc
-RUN python3 giteapc.py install Lephenixnoir/GiteaPC -y
+RUN giteapc install Lephenixnoir/GiteaPC -y
 
 # sysroot is part of fxsdk so this is needed first
-RUN python3 giteapc.py install Lephenixnoir/fxsdk@dev -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-binutils:clean -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc:clean -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-gdb -y
+RUN giteapc install Lephenixnoir/fxsdk@dev -y
+RUN giteapc install Lephenixnoir/sh-elf-binutils:clean -y
+RUN giteapc install Lephenixnoir/sh-elf-gcc:clean -y
+RUN giteapc install Lephenixnoir/sh-elf-gdb -y
 
-RUN python3 giteapc.py install Lephenixnoir/OpenLibm -y
-RUN python3 giteapc.py install Vhex-Kernel-Core/fxlibc@dev -y
-RUN python3 giteapc.py install Lephenixnoir/sh-elf-gcc -y  # again for any rebuild/update
-RUN python3 giteapc.py install Lephenixnoir/gint@dev -y
-RUN python3 giteapc.py install Lephenixnoir/JustUI@dev -y
+RUN giteapc install Lephenixnoir/OpenLibm -y
+RUN giteapc install Vhex-Kernel-Core/fxlibc@dev -y
+RUN giteapc install Lephenixnoir/sh-elf-gcc -y  # again for any rebuild/update
+RUN giteapc install Lephenixnoir/gint@dev -y
+RUN giteapc install Lephenixnoir/JustUI@dev -y
 
 # USER $USERNAME
 # WORKDIR /home/$USERNAME
